@@ -4,6 +4,7 @@ setup-project:
 	docker exec -it php-knowledge-base-php-fpm bash -c "composer install"
 	docker exec -it php-knowledge-base-php-fpm bash -c "chgrp -R www-data storage bootstrap/cache"
 	docker exec -it php-knowledge-base-php-fpm bash -c "chmod -R ug+rwx storage bootstrap/cache"
+	docker exec -it php-knowledge-base-php-fpm bash -c "php artisan key:generate"
 
 up:
 	docker compose up --build -d
