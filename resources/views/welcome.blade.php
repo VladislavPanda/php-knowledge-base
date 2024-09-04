@@ -12,15 +12,23 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="#!">
+                        <form action="{{ route('auth') }}" method="POST">
+                            @csrf
+
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
-                                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
+                                    <label for="email" class="form-label">
+                                        Email <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                           placeholder="name@example.com" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="password" class="form-label">Пароль <span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="password" id="password" value="" required>
+                                    <label for="password" class="form-label">
+                                        Пароль <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="password" class="form-control" name="password" id="password"
+                                           value="" required>
                                 </div>
                                 <!--<div class="col-12">
                                     <div class="form-check">
