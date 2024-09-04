@@ -22,3 +22,9 @@ stop:
 
 terminal:
 	docker exec -it php-knowledge-base-php-fpm bash
+
+migrate:
+	docker exec -it php-knowledge-base-php-fpm bash -c "php artisan migrate"
+
+rollback:
+	docker exec -it php-knowledge-base-php-fpm bash -c "php artisan migrate:rollback"
