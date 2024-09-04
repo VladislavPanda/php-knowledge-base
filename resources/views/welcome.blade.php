@@ -12,6 +12,17 @@
                                 </div>
                             </div>
                         </div>
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form action="{{ route('auth') }}" method="POST">
                             @csrf
 
@@ -21,14 +32,14 @@
                                         Email <span class="text-danger">*</span>
                                     </label>
                                     <input type="email" class="form-control" name="email" id="email"
-                                           placeholder="name@example.com" required>
+                                           placeholder="name@example.com">
                                 </div>
                                 <div class="col-12">
                                     <label for="password" class="form-label">
                                         Пароль <span class="text-danger">*</span>
                                     </label>
                                     <input type="password" class="form-control" name="password" id="password"
-                                           value="" required>
+                                           value="">
                                 </div>
                                 <!--<div class="col-12">
                                     <div class="form-check">
