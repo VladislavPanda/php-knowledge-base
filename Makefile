@@ -5,6 +5,7 @@ setup-project:
 	docker exec -it php-knowledge-base-php-fpm bash -c "chgrp -R www-data storage bootstrap/cache"
 	docker exec -it php-knowledge-base-php-fpm bash -c "chmod -R ug+rwx storage bootstrap/cache"
 	docker exec -it php-knowledge-base-php-fpm bash -c "php artisan key:generate"
+	docker exec -it php-knowledge-base-php-fpm bash -c "php artisan migrate"
 	npm install -D sass-embedded
 	npm install
 
@@ -28,3 +29,6 @@ migrate:
 
 rollback:
 	docker exec -it php-knowledge-base-php-fpm bash -c "php artisan migrate:rollback"
+
+vite-run:
+	npm run dev
