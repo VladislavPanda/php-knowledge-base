@@ -8,6 +8,7 @@ services:
             - "80:80"
         volumes:
             - ./etc/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ./public/dist:/var/www/php-knowledge-base/public/dist
 
     php-fpm:
         container_name: php-knowledge-base-php-fpm
@@ -15,6 +16,7 @@ services:
             dockerfile: ./etc/docker/php-fpm/Dockerfile
         volumes:
             - ./:/var/www/php-knowledge-base
+            - ./public/dist:/var/www/php-knowledge-base/public/dist
 
     db:
         container_name: php-knowledge-base-db
