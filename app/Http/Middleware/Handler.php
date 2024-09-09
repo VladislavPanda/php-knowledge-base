@@ -12,7 +12,8 @@ final class Handler
      * @var array|class-string[]
      */
     protected array $aliases = [
-        'auth.internal' => AuthInternalMiddleware::class
+        'auth.internal' => AuthInternalMiddleware::class,
+        'cache.prevent' => CachePreventMiddleware::class
     ];
 
     /**
