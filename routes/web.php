@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\ChapterController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', WelcomeController::class)->name('welcome')->middleware('guest');
 Route::post('/auth', [AuthController::class, 'login'])->name('auth');

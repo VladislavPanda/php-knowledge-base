@@ -6,6 +6,10 @@ namespace App\Dto;
 
 readonly final class ChapterDto
 {
+    /**
+     * @param int $id
+     * @param string $title
+     */
     public function __construct(
         private int $id,
         private string $title
