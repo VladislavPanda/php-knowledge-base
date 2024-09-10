@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Middleware\Handler;
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\Handler as MiddlewareHandler;
 use Illuminate\Foundation\Configuration\Exceptions;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -10,7 +10,7 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(new Handler())
+    ->withMiddleware(new MiddlewareHandler())
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

@@ -13,7 +13,8 @@ final class Handler
      */
     protected array $aliases = [
         'auth.internal' => AuthInternalMiddleware::class,
-        'cache.prevent' => CachePreventMiddleware::class
+        'cache.prevent' => CachePreventMiddleware::class,
+        'guest' => RedirectIfAuthenticatedMiddleware::class
     ];
 
     /**
