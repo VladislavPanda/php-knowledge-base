@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('chapter_id');
-            $table->string('title', 255);
+            $table->string('title');
             $table->foreign('chapter_id')->references('id')->on('chapters')->onDelete('cascade');
 
             $table->timestamps();
