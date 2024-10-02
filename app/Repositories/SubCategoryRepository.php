@@ -16,7 +16,19 @@ class SubCategoryRepository implements SubCategoryRepositoryInterface
     public function findAll(): array
     {
         return SubCategory::paginate()
-            ->map(fn (SubCategory $subCategory) => new SubCategoryDto($subCategory->id, $subCategory->title))
+            ->map(fn(SubCategory $subCategory) => new SubCategoryDto($subCategory->id, $subCategory->title))
+            ->toArray();
+    }
+
+    /**
+     * @param int $categoryId
+     * @return array|SubCategoryDto[]
+     */
+    public function findByCategoryId(int $categoryId): array
+    {
+        return SubCategory::where('category_id', $categoryId)
+            ->paginate()
+            ->map(fn(SubCategory $subCategory) => new SubCategoryDto($subCategory->id, $subCategory->title))
             ->toArray();
     }
 }
