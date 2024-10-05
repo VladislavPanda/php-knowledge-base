@@ -32,3 +32,7 @@ rollback:
 
 vite-run:
 	npm run dev
+
+setup-permissions:
+	docker exec -it php-knowledge-base-php-fpm bash -c "chgrp -R www-data storage bootstrap/cache"
+	docker exec -it php-knowledge-base-php-fpm bash -c "chmod -R ug+rwx storage bootstrap/cache"
