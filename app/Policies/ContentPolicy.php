@@ -20,6 +20,13 @@ class ContentPolicy
     public function edit(): bool
     {
         $roles = $this->roleRepository->findByUser();
-        dd($roles);
+
+        foreach ($roles as $roleDto) {
+            if ($roleDto->getPermissions()['content'] === 'all' || $roleDto->getPermissions()['content'] === 'edit') {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
