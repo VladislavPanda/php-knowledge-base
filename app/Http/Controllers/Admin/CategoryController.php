@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\SubCategoryRepository;
+use App\Repositories\Contracts\SubCategoryRepositoryInterface;
 
 class CategoryController extends Controller
 {
     public function __construct(
-        private SubCategoryRepository $subCategoryRepository
+        private SubCategoryRepositoryInterface $subCategoryRepository
     ) {
     }
 
