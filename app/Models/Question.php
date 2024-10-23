@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Contracts\ContentModelInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Question extends Model
+class Question extends Model implements ContentModelInterface
 {
     use HasFactory, SoftDeletes;
 
@@ -27,5 +28,13 @@ class Question extends Model
     public function subCategory(): BelongsTo
     {
         return $this->belongsTo(SubCategory::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function acceptedAnswer()
+    {
+        return $this->belongsTo(AcceptedAnswer::class);
     }
 }
