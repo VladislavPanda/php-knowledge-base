@@ -13,6 +13,13 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    @can('edit', \App\Models\Category::class)
+                                        <div class="row mb-4">
+                                            <div class="col-sm-12 col-md-6">
+                                                <button type="submit" class="btn btn-light">Добавить категорию</button>
+                                            </div>
+                                        </div>
+                                    @endcan
 {{--                                    <div class="row">--}}
 {{--                                        <div class="col-sm-12 col-md-6">--}}
 {{--                                            <div class="dt-buttons btn-group flex-wrap">--}}
@@ -59,7 +66,19 @@
                                                     @foreach ($categories as $category)
                                                         <tr class="odd">
                                                             <td class="dtr-control sorting_1">{{ $category->getId() }}</td>
-                                                            <td>{{ $category->getTitle() }}</td>
+                                                            <td><a href="{{ route('category.index', $category->getId()) }}">{{ $category->getTitle() }}</a></td>
+                                                            @can('edit', \App\Models\Category::class)
+                                                                <td>
+                                                                    <button type="submit" class="btn btn-secondary">
+                                                                        Редактировать
+                                                                    </button>
+                                                                </td>
+                                                                <td>
+                                                                    <button type="submit" class="btn btn-danger">
+                                                                        Удалить
+                                                                    </button>
+                                                                </td>
+                                                            @endcan
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
