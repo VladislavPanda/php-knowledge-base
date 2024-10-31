@@ -9,7 +9,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', WelcomeController::class)->name('welcome')->middleware('guest');
+Route::get('/', WelcomeController::class)->name('welcome')->middleware('guest')->middleware('cache.prevent');
 Route::post('/auth', [AuthController::class, 'login'])->name('auth');
 
 Route::middleware(['auth.internal', 'cache.prevent'])->group(function () {
