@@ -4,24 +4,18 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
-use App\Models\User;
-use App\Repositories\Contracts\RoleRepositoryInterface;
-
-class ContentPolicy
+class ContentPolicy extends BasePolicy
 {
-    public function __construct(
-        private RoleRepositoryInterface $roleRepository,
-    ) {
-    }
-
     /**
      * @return bool
      */
     public function edit(): bool
     {
-        $roles = $this->roleRepository->findByUser();
+        foreach ($this->roles as $roleDto) {
+            if (!array_key_exists('content', $roleDto->getPermissions())) {
+                return false;
+            }
 
-        foreach ($roles as $roleDto) {
             if ($roleDto->getPermissions()['content'] === 'all' || $roleDto->getPermissions()['content'] === 'edit') {
                 return true;
             }
