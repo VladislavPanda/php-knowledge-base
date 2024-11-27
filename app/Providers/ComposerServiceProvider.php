@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use App\Repositories\ChapterRepository;
 use App\Repositories\Contracts\ChapterRepositoryInterface;
+use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,9 +32,12 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('admin.sidebar', function ($view) {
+        View::composer(['admin.sidebar', 'admin.user.index'], function ($view) {
             $chapterRepository = $this->app->make(ChapterRepositoryInterface::class);
-            $view->with('chapters', $chapterRepository->findAll());
+            $userRepository = $this->app->make(UserRepositoryInterface::class);
+            $view
+                ->with('chapters', $chapterRepository->findAll())
+                ->with('user', $userRepository->findCurrentUserWithRoles());
         });
     }
 }
