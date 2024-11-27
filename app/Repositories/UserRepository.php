@@ -60,7 +60,7 @@ class UserRepository implements UserRepositoryInterface
             $user->id,
             $user->name,
             $user->email,
-            $user->avatar_url,
+            $user->avatar_url ?? 'http://localhost/storage/users_avatars/default_avatar.jpg',
             $user->social_id,
             $user->social_type,
             $user->password,
