@@ -34,6 +34,7 @@ class QuestionRepository implements QuestionRepositoryInterface
         return new QuestionDto(
             $question->id,
             $question->content,
+            $question->english_content,
             $question->acceptedAnswer?->content ?? 'Ответ не был сформирован',
             $question->acceptedAnswer?->english_content ?? 'Ответ не был сформирован',
         );

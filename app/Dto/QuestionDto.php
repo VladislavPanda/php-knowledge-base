@@ -9,7 +9,7 @@ readonly final class QuestionDto
     public function __construct(
         private int $id,
         private string $content,
-        private string $englishContent,
+        private string $englishContent = 'Ответ не был сформирован',
         private ?string $acceptedAnswerContent = 'Ответ не был сформирован',
         private ?string $acceptedAnswerEnglishContent = 'Ответ не был сформирован',
     ) {
