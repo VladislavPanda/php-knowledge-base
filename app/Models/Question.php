@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Contracts\ContentModelInterface;
+use App\Contracts\ContentModelPolicyInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Question extends Model implements ContentModelInterface
+class Question extends Model implements ContentModelPolicyInterface
 {
     use HasFactory, SoftDeletes;
 

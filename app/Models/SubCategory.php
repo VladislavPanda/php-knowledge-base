@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Contracts\ContentModelInterface;
+use App\Contracts\ContentModelPolicyInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SubCategory extends Model implements ContentModelInterface
+class SubCategory extends Model implements ContentModelPolicyInterface
 {
     use HasFactory, SoftDeletes;
 
