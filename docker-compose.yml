@@ -2,28 +2,28 @@ version: '3'
 
 services:
     nginx:
-        container_name: php-knowledge-base-nginx
+        container_name: php-knowledge-base-backend-nginx
         image: nginx:latest
         ports:
             - "80:80"
         volumes:
             - ./etc/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-            - ./public/dist:/var/www/php-knowledge-base/public/dist
-            - ./public/plugins:/var/www/php-knowledge-base/public/plugins
-            - ./public/storage:/var/www/php-knowledge-base/public/storage
+            - ./public/dist:/var/www/php-knowledge-base-backend/public/dist
+            - ./public/plugins:/var/www/php-knowledge-base-backend/public/plugins
+            - ./public/storage:/var/www/php-knowledge-base-backend/public/storage
 
     php-fpm:
-        container_name: php-knowledge-base-php-fpm
+        container_name: php-knowledge-base-backend-php-fpm
         build:
             dockerfile: ./etc/docker/php-fpm/Dockerfile
         volumes:
-            - ./:/var/www/php-knowledge-base
-            - ./public/dist:/var/www/php-knowledge-base/public/dist
-            - ./public/plugins:/var/www/php-knowledge-base/public/plugins
-            - ./public/storage:/var/www/php-knowledge-base/public/storage
+            - ./:/var/www/php-knowledge-base-backend
+            - ./public/dist:/var/www/php-knowledge-base-backend/public/dist
+            - ./public/plugins:/var/www/php-knowledge-base-backend/public/plugins
+            - ./public/storage:/var/www/php-knowledge-base-backend/public/storage
 
     db:
-        container_name: php-knowledge-base-db
+        container_name: php-knowledge-base-backend-db
         image: mysql:8
         env_file:
             - ./.env
